@@ -17,21 +17,8 @@ func _ready():
 		b.connect("pressed", self, "on_emoji_clicked", [b])
 
 func on_emoji_clicked(button: Button):
-	var emoji = add_markup(button.name)
-	emit_signal('emoji_selected', emoji)
-	OS.clipboard = emoji
-
-func add_markup(text:String):
-	match ProjectSettings.get(SettingsList.markup):
-		"none":
-			return text
-		"bbcode":
-			text = "[:%s:]" % text
-		"renpy":
-			text = "{:%s:}" % text
-		"markdown":
-			text = ":%s:" % text
-	return text
+	emit_signal('emoji_selected', button.name)
+	OS.clipboard = button.name
 
 func _on_resized():
 	if grid == null:

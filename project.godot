@@ -8,10 +8,24 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Emojis",
+"language": "GDScript",
+"path": "res://addons/emojis-for-godot/emojis/emojis.gd"
+} ]
+_global_script_class_icons={
+"Emojis": "res://addons/emojis-for-godot/icon.png"
+}
+
 [application]
 
 config/name="Emojis For Godot"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/emojis-for-godot/plugin.cfg" )
 
 [physics]
 
