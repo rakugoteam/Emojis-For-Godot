@@ -10,7 +10,7 @@ This addon provides the following nodes to use emojis in Godot:
 It's also adds **EmojiFinder** to the Godot editor's toolbar.
 So you can find the emojis easily.
 
-![EmojiFinder Screen Shot](screenshot.png)
+![EmojiFinder Screen Shot](screenshot_ef.png)
 
 ## Using it with RichTextLabel
 
@@ -29,7 +29,7 @@ func _ready():
 ```
 This is the result of the above code:
 
-![RichTextLabel Example Screen Shot](RichTextLabel.png)
+![RichTextLabel Example Screen Shot](screenshot_rtl.png)
 
 [**TexturePacker**](https://www.codeandweb.com/texturepacker) is used to generate the emoji atlases.
 
