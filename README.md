@@ -12,6 +12,25 @@ So you can find the emojis easily.
 
 ![EmojiFinder Screen Shot](screenshot.png)
 
+## Using it with RichTextLabel
+
+From version 1.2+ you can use emojis in RichTextLabel.
+
+This is the example code of using emojis in RichTextLabel:
+```gdscript
+extends RichTextLabel
+
+var emojis = load("res://addons/emojis-for-godot/emojis/emojis.gd").new()
+export var text_with_emojis := "some emoji :sunglasses:"
+ 
+func _ready():
+	bbcode_enabled = true
+	bbcode_text = emojis.parse_emojis(text_with_emojis)
+```
+This is the result of the above code:
+
+![RichTextLabel Example Screen Shot](RichTextLabel.png)
+
 [**TexturePacker**](https://www.codeandweb.com/texturepacker) is used to generate the emoji atlases.
 
 [lic]: https://img.shields.io/github/license/rakugoteam/Emojis-For-Godot?style=flat-square&label=📃%20License&
