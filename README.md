@@ -31,6 +31,10 @@ This is the result of the above code:
 
 ![RichTextLabel Example Screen Shot](screenshot_rtl.png)
 
+## Exporting
+For emojis to work in exported projects, you need add `*.json` files to include files settings:
+![include files settings](screenshot_export.png)
+
 [**TexturePacker**](https://www.codeandweb.com/texturepacker) is used to generate the emoji atlases.
 
 [lic]: https://img.shields.io/github/license/rakugoteam/Emojis-For-Godot?style=flat-square&label=📃%20License&
