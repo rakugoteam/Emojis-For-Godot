@@ -10,6 +10,4 @@ func _enter_tree():
   add_tool_menu_item(menu_item[0], emoji_finder, menu_item[1], menu_item[2])
   
 func _exit_tree():
-  remove_custom_type("EmojiButton")
-  remove_custom_type("EmojiIcon")
   remove_control_from_container(CONTAINER_TOOLBAR, emoji_finder)
