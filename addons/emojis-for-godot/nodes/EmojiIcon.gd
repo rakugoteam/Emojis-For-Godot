@@ -1,5 +1,6 @@
 tool
 extends TextureRect
+class_name EmojiIcon, "res://addons/emojis-for-godot/icons/EmojiIcon.svg"
 
 export var emoji_name := "sunglasses" setget _set_emoji
 export(String, "16", "36", "72") var emoji_size := "36" setget _set_emoji_size
