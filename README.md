@@ -14,13 +14,13 @@ So you can find the emojis easily.
 
 ## Using it with RichTextLabel
 
-From version 1.2+ you can use emojis in RichTextLabel.
+From version 1.3 you can use emojis in RichTextLabel.
 
 This is the example code of using emojis in RichTextLabel:
 ```gdscript
 extends RichTextLabel
 
-var emojis = load("res://addons/emojis-for-godot/emojis/emojis.gd").new()
+var emojis = Emojis.new()
 export var text_with_emojis := "some emoji :sunglasses:"
  
 func _ready():
