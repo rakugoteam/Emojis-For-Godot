@@ -3,7 +3,7 @@ extends EditorScript
 
 var grid := GridContainer.new()
 var file := File.new()
-var emojis = preload("../emojis/emojis.gd").new()
+var emojis = Emojis.new()
 
 func _run():
 	var i := 1.0
