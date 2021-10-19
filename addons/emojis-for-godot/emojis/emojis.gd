@@ -1,4 +1,6 @@
 tool
+extends Object
+class_name Emojis
 
 var path_here = "res://addons/emojis-for-godot/emojis/"
 var json_path = path_here + "emojis.json"
