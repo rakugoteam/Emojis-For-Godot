@@ -1,6 +1,6 @@
 # Godot-specific ignores
 # .import/ - commented out because it's in this case we want those files
-*.import
+# *.import - same as above: we want the imported files
 export.cfg
 export_presets.cfg
 
