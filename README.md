@@ -12,6 +12,18 @@ So you can find the emojis easily.
 
 ![EmojiFinder Screen Shot](screenshot_ef.png)
 
+## Install using gd-plug
+To install it with [gd-plug](https://github.com/imjp94/gd-plug) add in your `plug.gd` script:
+```gdscript
+extends "res://addons/gd-plug/plug.gd"
+
+func _plugging():
+	# your other plugins/addons install instructions
+	# ...
+	plug("rakugoteam/Emojis-For-Godot", {"include": [".import/"]})
+```
+
+
 ## Using it with RichTextLabel
 
 From version 1.3 you can use emojis in RichTextLabel.
