@@ -20,7 +20,7 @@ extends "res://addons/gd-plug/plug.gd"
 func _plugging():
 	# your other plugins/addons install instructions
 	# ...
-	plug("rakugoteam/Emojis-For-Godot", {"include": [".import/"]})
+	plug("rakugoteam/Emojis-For-Godot", {"include": ["addons", ".import/"]})
 ```
 
 
