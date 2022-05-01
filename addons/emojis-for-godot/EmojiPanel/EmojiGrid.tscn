@@ -853,7 +853,7 @@
 [ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f6c2.tres" type="Texture" id=851]
 [ext_resource path="res://addons/emojis-for-godot/emojis/36x36/1f31f.tres" type="Texture" id=852]
 
-[node name="" type="GridContainer"]
+[node name="EmojisGrid" type="GridContainer"]
 
 [node name="grinning" type="Button" parent="."]
 icon = ExtResource( 33 )
