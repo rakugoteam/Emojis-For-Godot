@@ -1,15 +1,17 @@
-tool
+@tool
 extends Object
 class_name Emojis
 
 var path_here = "res://addons/emojis-for-godot/emojis/"
 var json_path = path_here + "emojis.json"
 var emojis_path = path_here + "%dx%d/%s.tres"
-var emojis:Dictionary = {} setget dummy_set
+var emojis:Dictionary = {}: set = dummy_set
 
 func _init():
 	var content = get_file_content(json_path)
-	var emojis_list = parse_json(content)
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(content)
+	var emojis_list = test_json_conv.get_data()
 	init_emoji_dictionaries(emojis_list)
 
 func get_file_content(path:String) -> String:

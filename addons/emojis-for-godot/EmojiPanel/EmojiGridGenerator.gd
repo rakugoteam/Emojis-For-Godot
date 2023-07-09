@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorScript
 
 var grid := GridContainer.new()
@@ -19,7 +19,7 @@ func _run():
 		var b := Button.new()
 		b.name = id
 		b.icon = load(png)
-		b.connect("pressed", self, "on_emoji_clicked", [b])
+		b.connect("pressed", Callable(self, "on_emoji_clicked").bind(b))
 		grid.add_child(b)
 		b.owner = grid
 

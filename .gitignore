@@ -10,5 +10,6 @@ mono_crash.*.*.json
 
 # Project specific
 addons/godot-plugin-refresher
-.directory
+.godot
 .vscode/
+

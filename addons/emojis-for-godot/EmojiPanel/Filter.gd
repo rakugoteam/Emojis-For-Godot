@@ -1,8 +1,8 @@
-tool
+@tool
 extends LineEdit
 
-export var grid_node_path : NodePath
-onready var grid = get_node(grid_node_path)
+@export var grid_node_path : NodePath
+@onready var grid = get_node(grid_node_path)
 
 func _on_text_changed(new_text):
 	if new_text == '':

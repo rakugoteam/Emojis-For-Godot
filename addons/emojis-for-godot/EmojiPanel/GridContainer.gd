@@ -1,4 +1,4 @@
-tool
+@tool
 extends GridContainer
 
 func _on_filter_changed(text: String):
