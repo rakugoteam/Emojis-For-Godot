@@ -15,9 +15,9 @@ run/main_scene="res://addons/emojis-for-godot/examples/Examples.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.png"
 
-[editor_plugins]
+[autoload]
 
-enabled=PackedStringArray("res://addons/emojis-for-godot/plugin.cfg")
+EmojisDB="*res://addons/emojis-for-godot/emojis/emojis.gd"
 
 [physics]
 

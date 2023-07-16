@@ -1,8 +1,16 @@
+@tool
 extends RichTextLabel
 
-var emojis = load("res://addons/emojis-for-godot/emojis/emojis.gd").new()
-@export var text_with_emojis := "some emoji :sunglasses:"
- 
-func _ready():
-	bbcode_enabled = true
-	text = emojis.parse_emojis(text_with_emojis)
+@export_multiline
+var text_with_emojis: String:
+	set(value):
+		if !Engine.is_editor_hint():
+			await ready
+		_text_with_emojis = value
+		bbcode_enabled = true
+		parse_bbcode(EmojisDB.parse_emojis(value))
+	
+	get:
+		return _text_with_emojis
+
+var _text_with_emojis : String

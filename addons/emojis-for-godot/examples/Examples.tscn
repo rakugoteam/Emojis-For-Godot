@@ -1,38 +1,44 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://cw88rixpfkpbu"]
 
-[ext_resource path="res://addons/emojis-for-godot/nodes/EmojiIcon.gd" type="Script" id=1]
-[ext_resource path="res://addons/emojis-for-godot/nodes/EmojiButton.gd" type="Script" id=2]
-[ext_resource path="res://addons/emojis-for-godot/emojis/72x72/1f60e.tres" type="Texture2D" id=3]
-[ext_resource path="res://addons/emojis-for-godot/examples/LabelWithEmojis.gd" type="Script" id=4]
+[ext_resource type="Texture2D" path="res://addons/emojis-for-godot/emojis/36x36/1f1e7.tres" id="1_xhrrx"]
+[ext_resource type="Script" path="res://addons/emojis-for-godot/nodes/EmojiButton.gd" id="2_52dc1"]
+[ext_resource type="Script" path="res://addons/emojis-for-godot/nodes/EmojiIcon.gd" id="3_bhuao"]
+[ext_resource type="Texture2D" path="res://addons/emojis-for-godot/emojis/36x36/1f1ee.tres" id="3_rss41"]
+[ext_resource type="Script" path="res://addons/emojis-for-godot/examples/LabelWithEmojis.gd" id="5_dmngo"]
 
-[node name="Examples" type="Control"]
+[node name="Exmaples" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="EmojiButton" type="Button" parent="."]
-offset_left = 49.1369
-offset_top = 194.028
-offset_right = 133.137
-offset_bottom = 272.028
-icon = ExtResource( 3 )
-script = ExtResource( 2 )
-emoji_size = "72"
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+icon = ExtResource("1_xhrrx")
+script = ExtResource("2_52dc1")
+emoji_name = "b"
+emoji_size = "36"
 
 [node name="EmojiIcon" type="TextureRect" parent="."]
-offset_left = 168.118
-offset_top = 196.273
-offset_right = 240.118
-offset_bottom = 268.273
-texture = ExtResource( 3 )
-script = ExtResource( 1 )
-emoji_size = "72"
+layout_mode = 0
+offset_left = 48.0
+offset_top = 4.0
+offset_right = 88.0
+offset_bottom = 44.0
+texture = ExtResource("3_rss41")
+script = ExtResource("3_bhuao")
+emoji_name = "i"
+emoji_size = "36"
 
-[node name="LabelWithEmojis" type="RichTextLabel" parent="."]
-offset_left = 318.137
-offset_top = 210.028
-offset_right = 825.137
-offset_bottom = 293.028
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="LabelWithEmoji" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 281.0
+offset_bottom = 59.0
+bbcode_enabled = true
+script = ExtResource("5_dmngo")
+text_with_emojis = "Label with :e::m::o::j::i: :grin:"
