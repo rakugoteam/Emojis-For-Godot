@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cw88rixpfkpbu"]
+[gd_scene load_steps=5 format=3 uid="uid://cw88rixpfkpbu"]
 
-[ext_resource type="Texture2D" path="res://addons/emojis-for-godot/emojis/36x36/1f1e7.tres" id="1_xhrrx"]
+[ext_resource type="Texture2D" path="res://addons/emojis-for-godot/emojis/36x36/1f601.tres" id="1_20q0r"]
 [ext_resource type="Script" path="res://addons/emojis-for-godot/nodes/EmojiButton.gd" id="2_52dc1"]
 [ext_resource type="Script" path="res://addons/emojis-for-godot/nodes/EmojiIcon.gd" id="3_bhuao"]
-[ext_resource type="Texture2D" path="res://addons/emojis-for-godot/emojis/36x36/1f1ee.tres" id="3_rss41"]
 [ext_resource type="Script" path="res://addons/emojis-for-godot/examples/LabelWithEmojis.gd" id="5_dmngo"]
 
 [node name="Exmaples" type="Control"]
@@ -18,9 +17,9 @@ grow_vertical = 2
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
-icon = ExtResource("1_xhrrx")
+icon = ExtResource("1_20q0r")
 script = ExtResource("2_52dc1")
-emoji_name = "b"
+emoji_name = "grinn"
 emoji_size = "36"
 
 [node name="EmojiIcon" type="TextureRect" parent="."]
@@ -29,9 +28,9 @@ offset_left = 48.0
 offset_top = 4.0
 offset_right = 88.0
 offset_bottom = 44.0
-texture = ExtResource("3_rss41")
+texture = ExtResource("1_20q0r")
 script = ExtResource("3_bhuao")
-emoji_name = "i"
+emoji_name = "grin"
 emoji_size = "36"
 
 [node name="LabelWithEmoji" type="RichTextLabel" parent="."]
@@ -40,5 +39,6 @@ offset_left = 96.0
 offset_right = 281.0
 offset_bottom = 59.0
 bbcode_enabled = true
+text = "Label with [img]res://addons/emojis-for-godot/emojis/16x16/1f1ea.tres[/img][img]res://addons/emojis-for-godot/emojis/16x16/1f1f2.tres[/img][img]res://addons/emojis-for-godot/emojis/16x16/1f1f4.tres[/img][img]res://addons/emojis-for-godot/emojis/16x16/1f1ef.tres[/img][img]res://addons/emojis-for-godot/emojis/16x16/1f1ee.tres[/img] [img]res://addons/emojis-for-godot/emojis/16x16/1f601.tres[/img]"
 script = ExtResource("5_dmngo")
 text_with_emojis = "Label with :e::m::o::j::i: :grin:"

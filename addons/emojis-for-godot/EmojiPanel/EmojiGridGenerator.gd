@@ -10,9 +10,14 @@ func _run():
 	grid.name = "EmojisGrid"
 
 	for id in EmojisDB.emojis.keys():
-		var b := EmojiButton.new()
+		var texture := EmojisDB.get_path_to_emoji(id, 36)
+		if !ResourceLoader.exists(texture):
+			print("Texture for %s not found" % id)
+			continue
+
+		var b := Button.new()
 		b.name = id
-		b.set_emoji(id, "36")
+		b.icon = load(texture) as Texture
 		grid.add_child(b)
 		b.owner = grid
 

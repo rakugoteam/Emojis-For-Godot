@@ -8,9 +8,10 @@ var text_with_emojis: String:
 			await ready
 		_text_with_emojis = value
 		bbcode_enabled = true
-		parse_bbcode(EmojisDB.parse_emojis(value))
+		text = EmojisDB.parse_emojis(value)
 	
 	get:
 		return _text_with_emojis
 
 var _text_with_emojis : String
+

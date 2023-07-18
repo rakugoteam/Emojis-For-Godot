@@ -13,11 +13,15 @@ config_version=5
 config/name="Emojis For Godot"
 run/main_scene="res://addons/emojis-for-godot/examples/Examples.tscn"
 config/features=PackedStringArray("4.1")
-config/icon="res://icon.png"
+config/icon="res://addons/emojis-for-godot/icon.png"
 
 [autoload]
 
 EmojisDB="*res://addons/emojis-for-godot/emojis/emojis.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/emojis-for-godot/plugin.cfg")
 
 [physics]
 

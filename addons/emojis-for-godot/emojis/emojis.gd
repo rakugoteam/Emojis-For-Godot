@@ -24,20 +24,20 @@ func get_file_content(path:String) -> String:
 	return content
 
 func init_emoji_dictionaries(list:Array):
-	self.emojis = {}
+	emojis = {}
 
 	for group in list:
 		for emoji in group.emojis:
-			var name = emoji.shortname
-			name = name.replace(":", "")
-			name = name.replace("regional_indicator_", "")
-			self.emojis[name] = emoji.hex
+			var _name = emoji.shortname
+			_name = _name.replace(":", "")
+			_name = _name.replace("regional_indicator_", "")
+			emojis[_name] = emoji.hex
 
 func get_path_to_emoji(id:String, size:int = 16) -> String:
 	if id in emojis:
 		return emojis_path % [size, size, emojis[id]]
 
-	push_warning("Emoji %dx%d/%s not found." % [size, size, id])
+	push_warning("Emoji %s with size %s not found." % [id, size])
 	return ""
 
 func get_emoji_bbcode(id:String, size:int = 16) -> String:

@@ -1,32 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://djrdftv81qxb2"]
+[gd_scene load_steps=3 format=3 uid="uid://djrdftv81qxb2"]
 
-[ext_resource type="Script" path="res://addons/emojis-for-godot/EmojiPanel/Filter.gd" id="1"]
 [ext_resource type="Script" path="res://addons/emojis-for-godot/EmojiPanel/EmojiPanel.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://cs4m4sbxbhv3v" path="res://addons/emojis-for-godot/EmojiPanel/EmojiGrid.tscn" id="3_xww1w"]
 
-[sub_resource type="GDScript" id="GDScript_visop"]
-script/source = "@tool
-extends Label
-
-func _ready():
-	hide()
-
-func _on_emoji_selected(emoji_name):
-	self.text = emoji_name + \" copied\"
-	show()
-	$Timer.start(2)
-
-func _on_timeout():
-	hide()
-	self.text = \"\"
-"
-
-[node name="Popup" type="Window" node_paths=PackedStringArray("notify_label")]
+[node name="Popup" type="Window" node_paths=PackedStringArray("grid", "notify_label", "search")]
 title = "Emoji Finder"
 position = Vector2i(0, 36)
 size = Vector2i(300, 300)
-popup_window = true
 script = ExtResource("3")
+grid = NodePath("Panel/Emoji/ScrollContainer/EmojisGrid")
 notify_label = NodePath("Panel/Emoji/NotificationLabel")
+search = NodePath("Panel/Emoji/Filter")
+grid_bound = 0.9
+button_x = 44
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -51,7 +37,6 @@ layout_mode = 2
 placeholder_text = "Search"
 caret_blink = true
 caret_blink_interval = 0.5
-script = ExtResource("1")
 
 [node name="HSeparator2" type="HSeparator" parent="Panel/Emoji"]
 layout_mode = 2
@@ -59,16 +44,16 @@ layout_mode = 2
 [node name="NotificationLabel" type="Label" parent="Panel/Emoji"]
 visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.231373, 0.952941, 0.227451, 1)
+theme_override_colors/font_color = Color(0.2, 0.768627, 0.196078, 1)
 text = "Copied Emoji message here"
 clip_text = true
 max_lines_visible = 2
-script = SubResource("GDScript_visop")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Panel/Emoji"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[connection signal="about_to_popup" from="." to="Panel/Emoji" method="_on_about_to_show"]
-[connection signal="text_changed" from="Panel/Emoji/Filter" to="Panel/Emoji/Filter" method="_on_text_changed"]
+[node name="EmojisGrid" parent="Panel/Emoji/ScrollContainer" instance=ExtResource("3_xww1w")]
+layout_mode = 2
+columns = 6
