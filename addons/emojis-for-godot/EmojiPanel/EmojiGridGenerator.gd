@@ -1,25 +1,23 @@
-tool
+@tool
 extends EditorScript
 
 var grid := GridContainer.new()
-var file := File.new()
-var emojis = Emojis.new()
 
 func _run():
 	var i := 1.0
 	var p: = 0.0
-	var size := float(emojis.emojis.size())
+	var size := float(EmojisDB.emojis.size())
 	grid.name = "EmojisGrid"
 
-	for id in emojis.emojis.keys():
-		var png = emojis.get_path_to_emoji(id, 36)
-		if not file.file_exists(png):
+	for id in EmojisDB.emojis.keys():
+		var texture := EmojisDB.get_path_to_emoji(id, 36)
+		if !ResourceLoader.exists(texture):
+			print("Texture for %s not found" % id)
 			continue
-			
+
 		var b := Button.new()
 		b.name = id
-		b.icon = load(png)
-		b.connect("pressed", self, "on_emoji_clicked", [b])
+		b.icon = load(texture) as Texture
 		grid.add_child(b)
 		b.owner = grid
 
@@ -34,11 +32,11 @@ func _run():
 
 	if result == OK:
 		var path := "res://addons/emojis-for-godot/EmojiPanel/EmojiGrid.tscn"
-		var error = ResourceSaver.save(path, scene)
+		var error = ResourceSaver.save(scene, path)
 		
 		if error != OK:
-				push_error("An error occurred while saving the scene to disk.")
-				return
+			push_error("An error occurred while saving the scene to disk.")
+			return
 
 		print("EmojisGrid saved")
 

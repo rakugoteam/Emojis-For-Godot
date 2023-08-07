@@ -6,39 +6,22 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "Button",
-"class": "EmojiButton",
-"language": "GDScript",
-"path": "res://addons/emojis-for-godot/nodes/EmojiButton.gd"
-}, {
-"base": "TextureRect",
-"class": "EmojiIcon",
-"language": "GDScript",
-"path": "res://addons/emojis-for-godot/nodes/EmojiIcon.gd"
-}, {
-"base": "Object",
-"class": "Emojis",
-"language": "GDScript",
-"path": "res://addons/emojis-for-godot/emojis/emojis.gd"
-} ]
-_global_script_class_icons={
-"EmojiButton": "res://addons/emojis-for-godot/icons/EmojiButton.svg",
-"EmojiIcon": "res://addons/emojis-for-godot/icons/EmojiIcon.svg",
-"Emojis": ""
-}
+config_version=5
 
 [application]
 
 config/name="Emojis For Godot"
 run/main_scene="res://addons/emojis-for-godot/examples/Examples.tscn"
-config/icon="res://icon.png"
+config/features=PackedStringArray("4.1")
+config/icon="res://addons/emojis-for-godot/icon.png"
+
+[autoload]
+
+EmojisDB="*res://addons/emojis-for-godot/emojis/emojis.gd"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/emojis-for-godot/plugin.cfg" )
+enabled=PackedStringArray("res://addons/emojis-for-godot/plugin.cfg")
 
 [physics]
 
@@ -46,4 +29,4 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/defaults/default_environment="res://default_env.tres"
