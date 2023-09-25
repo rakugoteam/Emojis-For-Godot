@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Emojis For Godot"
+config/description="No Description"
 run/main_scene="res://addons/emojis-for-godot/examples/Examples.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://addons/emojis-for-godot/icon.png"
