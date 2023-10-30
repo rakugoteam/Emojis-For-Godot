@@ -27,4 +27,6 @@ func _exit_tree():
 	remove_tool_menu_item("Emoji Finder")
 	command_palette.remove_command("find_emoji")
 	remove_autoload_singleton("EmojisDB")
-	emoji_finder.queue_free()
+	
+	if emoji_finder:
+		emoji_finder.queue_free()

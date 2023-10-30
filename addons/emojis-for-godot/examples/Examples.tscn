@@ -19,8 +19,8 @@ offset_right = 8.0
 offset_bottom = 8.0
 icon = ExtResource("1_20q0r")
 script = ExtResource("2_52dc1")
-emoji_name = "grinn"
-emoji_size = "36"
+emoji_name = ""
+emoji_size = ""
 
 [node name="EmojiIcon" type="TextureRect" parent="."]
 layout_mode = 0
@@ -30,8 +30,8 @@ offset_right = 88.0
 offset_bottom = 44.0
 texture = ExtResource("1_20q0r")
 script = ExtResource("3_bhuao")
-emoji_name = "grin"
-emoji_size = "36"
+emoji_name = ""
+emoji_size = ""
 
 [node name="LabelWithEmoji" type="RichTextLabel" parent="."]
 layout_mode = 0
