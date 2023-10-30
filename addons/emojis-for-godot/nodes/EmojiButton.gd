@@ -20,8 +20,8 @@ var emoji_size := "16":
 		return _emoji_size
 
 func set_emoji(id:String, size:String):
-	if !Engine.is_editor_hint():
-		await ready
+	if !is_node_ready():
+		return
 	
 	_emoji_id= id
 	_emoji_size = size
