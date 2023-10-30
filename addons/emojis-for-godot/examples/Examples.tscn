@@ -41,4 +41,3 @@ offset_bottom = 59.0
 bbcode_enabled = true
 text = "Label with [img]res://addons/emojis-for-godot/emojis/16x16/1f1ea.tres[/img][img]res://addons/emojis-for-godot/emojis/16x16/1f1f2.tres[/img][img]res://addons/emojis-for-godot/emojis/16x16/1f1f4.tres[/img][img]res://addons/emojis-for-godot/emojis/16x16/1f1ef.tres[/img][img]res://addons/emojis-for-godot/emojis/16x16/1f1ee.tres[/img] [img]res://addons/emojis-for-godot/emojis/16x16/1f601.tres[/img]"
 script = ExtResource("5_dmngo")
-text_with_emojis = "Label with :e::m::o::j::i: :grin:"
