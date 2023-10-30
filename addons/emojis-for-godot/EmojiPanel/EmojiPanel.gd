@@ -37,7 +37,7 @@ func on_emoji_clicked(button: Button):
 	notify_label.text = "Copied " + button.name + " to clipboard"
 	notify_label.show()
 	
-	var t := get_tree().create_tween()
+	var t := create_tween()
 	t.tween_property(
 		notify_label, "modulate",
 		Color.GREEN, 1
@@ -45,8 +45,10 @@ func on_emoji_clicked(button: Button):
 	t.chain().tween_property(
 		notify_label, "modulate",
 		Color.TRANSPARENT, 1
-		)
+	)
+	t.play()
 	await t.finished
+	t.kill()
 	notify_label.hide()
 
 func _on_resized():
