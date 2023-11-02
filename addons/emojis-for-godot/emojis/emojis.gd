@@ -50,11 +50,13 @@ func get_emoji_bbcode(id:String, size:int = 16) -> String:
 
 func parse_emojis(text:String):
 	var re = RegEx.new()
-	re.compile("\\:([\\w.-]+)\\:")
+	re.compile(":([\\w.-]+)(,\\s*\\d+)?:")
 	var x = re.search(text)
 	while x != null:
 		var emoji = x.get_string(1)
-		var r = get_emoji_bbcode(emoji)
+		var size = int(x.get_string(2))
+		if size == 0: size = 16
+		var r = get_emoji_bbcode(emoji, size)
 		text = text.replace(x.get_string(), r)
 		x = re.search(text, x.get_end())
 	
