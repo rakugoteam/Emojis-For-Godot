@@ -3,6 +3,8 @@
 
 *This is Godot 4.x version if you what version for Godot 3.4+ check [godot-3] branch.*
 
+![addon-in-action]
+
 ## Important! Upgrading from 2.0 to 2.1
 
 As 2.1 version use font instead of texture atlas in doesn't need so many files.
@@ -57,15 +59,13 @@ This is the result of the above code:
 For emojis to work in exported projects, you need add `*.json` files to include files settings:
 ![include files settings][export-screenshot]
 
-
 [lic]: https://img.shields.io/github/license/rakugoteam/Emojis-For-Godot?style=flat-square&label=📃%20License&
 [lang]: https://img.shields.io/github/languages/top/rakugoteam/Emojis-For-Godot?style=flat-square
 [emojis-lic]: https://img.shields.io/badge/license-CC0%201.0-orange.svg?style=flat-square&label=📃%20Emojis%20License&
+[addon-in-action]:.assets/addon-in-action.png
 [godot-3]:https://github.com/rakugoteam/Emojis-For-Godot/tree/godot-3
 [noto-emoji]:https://github.com/googlefonts/noto-emoji/tree/main/png
 [emoji-json]:https://github.com/rakugoteam/Emojis-For-Godot/tree/godot-4/addons/emojis-for-godot/emojis/gen_json.py
-[emoji-finder-screenshot]:.assets/addons/emojis.png
-[LabelWithEmojis-godot3]:https://github.com/rakugoteam/Emojis-For-Godot/blob/godot-3/addons/emojis-for-godot/examples/LabelWithEmojis.gd
-[LabelWithEmojis-godot4]:https://github.com/rakugoteam/Emojis-For-Godot/blob/godot-4/addons/emojis-for-godot/examples/LabelWithEmojis.gd
-[LabelWithEmojis-screenshot]:.assets/addons/emojis.png
-[export-screenshot]:.assets/screenshot_export.png
+[emoji-finder-screenshot]:.assets/emoji-finder.png
+[LabelWithEmojis-screenshot]:.assets/label-with-emojis.png
+[export-screenshot]:.assets/export.png

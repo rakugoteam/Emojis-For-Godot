@@ -22,7 +22,7 @@ EmojisDB="*res://addons/emojis-for-godot/emojis/emojis.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/emojis-for-godot/plugin.cfg", "res://addons/nv.file_system/plugin.cfg")
+enabled=PackedStringArray("res://addons/emojis-for-godot/plugin.cfg")
 
 [physics]
 
