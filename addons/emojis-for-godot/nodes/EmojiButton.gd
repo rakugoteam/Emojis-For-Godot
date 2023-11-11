@@ -22,3 +22,6 @@ func update_emoji():
 	set("theme_override_font_sizes/normal_font_size", emoji_size)
 	if emoji_name:
 		text = EmojisDB.get_emoji_unicode(emoji_name)
+
+func _ready() -> void:
+	update_emoji()
