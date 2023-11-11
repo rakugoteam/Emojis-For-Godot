@@ -1,43 +1,83 @@
 @tool
 extends Window
 
-@export var grid : GridContainer
-@export var notify_label : Label
-@export var search : LineEdit
-@export var grid_bound := 0.8
-@export var button_x := 42
+@export
+@onready var emojis_text : RichTextLabel
 
-signal emoji_selected(emoji_name)
+@export_range(0.1, 1, 0.01)
+var fill_scale_x : float = 0.8
+
+@export
+@onready var notify_label : Label
+
+@export
+@onready var search_line_edit : LineEdit
+
+@export
+@onready var size_slider : HSlider
+
+@export
+@onready var size_label : Label
+
+@export
+@onready var scroll_container : ScrollContainer
+
+var scroll_bar_v : ScrollBar:
+	get: return scroll_container.get_v_scroll_bar()
+
+var scroll_bar_h : ScrollBar:
+	get: return scroll_container.get_h_scroll_bar()
 
 func _ready():
+	notify_label.hide()
+	search_line_edit.text_changed.connect(update_table)
+	emojis_text.meta_clicked.connect(_on_meta)
+	emojis_text.set_meta_underline(false)
+	emojis_text.tooltip_text = "click on emoji to copy its name to clipboard"
 	close_requested.connect(hide)
-	size_changed.connect(_on_resized)
-	
-	var bx := grid.get_child(0) as Button 
-	button_x = bx.size.x # * grid_bound
-	
-	for ch in grid.get_children():
-		var b := ch as Button
-		b.tooltip_text = "click on emoji to copy its name to clipboard"
-		b.pressed.connect(on_emoji_clicked.bind(b))
+	size_slider.value_changed.connect(update_emojis_size)
+	about_to_popup.connect(update_table)
 
-	about_to_popup.connect(_on_resized)
-	search.text_changed.connect(on_text_changed)
-	columns_update()
+func _on_visibility_changed():
+	if is_visible():
+		update_emojis_size(size_slider.value)
 
-func on_text_changed(filter: String):
-	for ch in grid.get_children():
-		var b := ch as Button
+func update_emojis_size(value:int):
+	size_label.text = str(value)
+	emojis_text.set("theme_override_font_sizes/normal_font_size", value)
+	update_table(search_line_edit.text)
+
+func update_table(filter := ""):
+	var table = "[table={columns}, {inline_align}]"
+	table = table.format({
+		"columns": int ((size.x * fill_scale_x) / size_slider.value) ,
+		"inline_align": INLINE_ALIGNMENT_CENTER
+	})
+
+	for key in EmojisDB.emojis:
 		if filter:
-			b.visible = filter in b.name
+			if not (filter.to_lower() in key):
+				continue
+		
+		var link := "[url={link}]{text}[/url]"
+		var text := str(EmojisDB.emojis[key])
+		link = link.format({"link": key, "text": text})
 
-func on_emoji_clicked(button: Button):
-	emoji_selected.emit(button.name)
-	DisplayServer.clipboard_set(button.name)
-	notify_label.text = "Copied " + button.name + " to clipboard"
+		var cell := "[cell]{link}[/cell]"
+		table += cell.format({"link": link})
+
+	table += "[/table]"
+	emojis_text.parse_bbcode(table)
+	await emojis_text.finished
+	scroll_bar_h.max_value = emojis_text.size.y
+	scroll_bar_v.max_value = emojis_text.size.x
+
+func _on_meta(link:String):
+	DisplayServer.clipboard_set(link)
+	notify_label.text = "Copied to Clipboard: " + link
 	notify_label.show()
-	
-	var t := create_tween()
+
+	var t := get_tree().create_tween()
 	t.tween_property(
 		notify_label, "modulate",
 		Color.GREEN, 1
@@ -45,16 +85,6 @@ func on_emoji_clicked(button: Button):
 	t.chain().tween_property(
 		notify_label, "modulate",
 		Color.TRANSPARENT, 1
-	)
-	t.play()
+		)
 	await t.finished
-	t.kill()
 	notify_label.hide()
-
-func _on_resized():
-	if visible:
-		columns_update()
-
-func columns_update():
-	grid.columns = floor((size.x * grid_bound) / button_x)
-

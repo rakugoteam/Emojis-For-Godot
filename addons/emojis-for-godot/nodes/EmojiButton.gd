@@ -3,31 +3,22 @@
 extends Button
 class_name EmojiButton
 
-var _emoji_id: String
-var _emoji_size : String
-
 @export var emoji_name := "sunglasses":
 	set(value):
-		set_emoji(value, _emoji_size)
-	get:
-		return _emoji_id
+		emoji_name = value
+		update_emoji()
 
-@export_enum("16", "36", "72")
-var emoji_size := "16":
+	get: return emoji_name
+
+@export_range(16, 512, 16) var emoji_size := 16:
 	set(value):
-		set_emoji(_emoji_id, value)
-	get:
-		return _emoji_size
+		emoji_size = value
+		update_emoji()
 
-func set_emoji(id:String, size:String):
-	if !is_node_ready():
-		return
-	
-	_emoji_id= id
-	_emoji_size = size
-	var _texture = EmojisDB.get_path_to_emoji(id, int(size))
-	if !ResourceLoader.exists(_texture):
-		return
-	
-	if _texture != "":
-		icon = load(_texture) as Texture2D
+	get: return emoji_size
+
+func update_emoji():
+	set("theme_override_fonts/font", EmojisDB.font)
+	set("theme_override_font_sizes/normal_font_size", emoji_size)
+	if emoji_name:
+		text = EmojisDB.get_emoji_unicode(emoji_name)
