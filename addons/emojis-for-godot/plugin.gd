@@ -18,7 +18,7 @@ func _enter_tree():
 func show_emoji_finder():
 	if emoji_finder == null:
 		emoji_finder = load(emoji_finder_path).instantiate() as Window
-		editor_interface.add_child(emoji_finder)
+		editor_interface.add_child.call_deferred(emoji_finder)
 
 	emoji_finder.theme = editor_interface.theme
 	emoji_finder.popup_centered(popup_size)
