@@ -1,6 +1,6 @@
 # Godot-specific ignores
-# .import/ - commented out because it's in this case we want those files
-# *.import - same as above: we want the imported files
+.import/**
+.godot/**
 export.cfg
 export_presets.cfg
 
@@ -9,7 +9,6 @@ export_presets.cfg
 mono_crash.*.*.json
 
 # Project specific
-addons/godot-plugin-refresher
-.godot
 .vscode/
-
+addons/nv.file_system
+py_env/
