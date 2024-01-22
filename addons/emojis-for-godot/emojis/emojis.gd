@@ -39,7 +39,9 @@ func init_emoji_dictionaries(dict:Dictionary):
 	emojis = {}
 
 	for emoji in dict:
-		emojis[dict[emoji]] = emoji
+		var keys = dict[emoji]
+		for key in keys:
+			emojis[key] = emoji
 		
 		# prints(dict[emoji], emoji)
 

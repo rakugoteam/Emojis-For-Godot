@@ -12,8 +12,9 @@ config_version=5
 
 config/name="Emojis For Godot"
 config/description="No Description"
+config/tags=PackedStringArray("addon", "rakugo")
 run/main_scene="res://addons/emojis-for-godot/examples/Examples.tscn"
-config/features=PackedStringArray("4.1")
+config/features=PackedStringArray("4.2")
 config/icon="res://addons/emojis-for-godot/icon.png"
 
 [autoload]

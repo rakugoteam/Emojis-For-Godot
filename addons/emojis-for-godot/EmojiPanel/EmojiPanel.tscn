@@ -79,6 +79,7 @@ theme_override_fonts/normal_font = ExtResource("2_66r43")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 fit_content = true
+scroll_active = false
 autowrap_mode = 0
 meta_underlined = false
 threaded = true

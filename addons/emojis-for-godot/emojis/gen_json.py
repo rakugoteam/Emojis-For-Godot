@@ -7,12 +7,10 @@ and apply as much formatting as possible so the codes can be dropped into the
 emoji registry file.
 """
 
-import sys
-import os
+import sys, os
+import re, bs4
 import unicodedata
-import re
 import requests
-import bs4
 import xml.etree.ElementTree as ET
 import logging
 import emoji as emoji_pkg
@@ -455,11 +453,15 @@ if __name__ == "__main__":
 		if any("flag_for_" in a for a in aliases):
 			# Put the :flag_for_COUNTRY: alias as the first entry so that it gets picked by demojize()
 			# This ensures compatibility because in the past there was only the :flag_for_COUNTRY: alias
-			aliases = [a for a in aliases if "flag_for_" in a] + [a for a in aliases if "flag_for_" not in a]
+			aliases = [a for a in aliases if "flag_for_" in a]
+			aliases += [a for a in aliases if "flag_for_" not in a]
 
-		# Print dict of dicts
-		alias = ''
-		emojis_data[emj] = v["en"].lower()
+		# emoji to dict
+		emojis_data[emj] = [v["en"].lower()]
+		
+		for a in aliases:
+			emojis_data[emj].append(a)
+	
 		if v["status"] == "fully_qualified":
 			f += 1
 		elif v["status"] == "component":
