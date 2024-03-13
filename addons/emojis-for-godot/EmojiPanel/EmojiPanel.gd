@@ -35,12 +35,15 @@ func _ready():
 	close_requested.connect(hide)
 	size_slider.value_changed.connect(update_emojis_size)
 	about_to_popup.connect(update_table)
+	help_button.pressed.connect(_on_help)
 	update_emojis_size(size_slider.value)
+
+func _on_help():
+	OS.shell_open("https://rakugoteam.github.io/emojis-docs/2.2/HowToUse/")
 
 func _on_finished():
 	scroll_bar_h.max_value = emojis_text.size.y
 	scroll_bar_v.max_value = emojis_text.size.x
-	update_emojis_size(size_slider.value)
 
 func _on_visibility_changed():
 	if is_visible():

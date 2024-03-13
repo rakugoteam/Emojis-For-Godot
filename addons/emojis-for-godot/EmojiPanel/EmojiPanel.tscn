@@ -1,19 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bni8w3a3pcbwn"]
+[gd_scene load_steps=4 format=3 uid="uid://bni8w3a3pcbwn"]
 
 [ext_resource type="Script" path="res://addons/emojis-for-godot/EmojiPanel/EmojiPanel.gd" id="1_nv02s"]
 [ext_resource type="FontFile" uid="uid://be10y8fgoiayy" path="res://addons/emojis-for-godot/emojis/NotoColorEmoji.ttf" id="2_66r43"]
+[ext_resource type="Script" path="res://addons/emojis-for-godot/nodes/EmojiButton.gd" id="3_ytnla"]
 
-[node name="EmojiFinder" type="Window" node_paths=PackedStringArray("emojis_text", "notify_label", "search_line_edit", "size_slider", "size_label", "scroll_container")]
+[node name="EmojiFinder" type="Window" node_paths=PackedStringArray("emojis_text", "notify_label", "search_line_edit", "size_slider", "size_label", "scroll_container", "help_button")]
 title = "Emoji Finder"
 initial_position = 2
 size = Vector2i(775, 400)
 script = ExtResource("1_nv02s")
 emojis_text = NodePath("Panel/VBoxContainer/ScrollContainer/RichTextLabel")
 notify_label = NodePath("Panel/VBoxContainer/Notify")
-search_line_edit = NodePath("Panel/VBoxContainer/Search")
+search_line_edit = NodePath("Panel/VBoxContainer/HBoxContainer/Search")
 size_slider = NodePath("Panel/VBoxContainer/SliderContainer/HSlider")
 size_label = NodePath("Panel/VBoxContainer/SliderContainer/LabelSize")
 scroll_container = NodePath("Panel/VBoxContainer/ScrollContainer")
+help_button = NodePath("Panel/VBoxContainer/HBoxContainer/EmojiButton")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
@@ -34,17 +36,28 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Search" type="LineEdit" parent="Panel/VBoxContainer"]
+[node name="Notify" type="Label" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+text = "Emoji-x was copied to clipboard."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Search" type="LineEdit" parent="Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Search"
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="Notify" type="Label" parent="Panel/VBoxContainer"]
-visible = false
+[node name="EmojiButton" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Emoji-x was copied to clipboard."
+tooltip_text = "Open Online Help"
+theme_override_fonts/font = ExtResource("2_66r43")
+text = "❓"
+script = ExtResource("3_ytnla")
+emoji_name = "red_question_mark"
 
 [node name="SliderContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -78,6 +91,7 @@ theme_override_colors/table_border = Color(1, 1, 1, 1)
 theme_override_fonts/normal_font = ExtResource("2_66r43")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
+text = "[center] [pulse]Loading... [/pulse][/center]"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
