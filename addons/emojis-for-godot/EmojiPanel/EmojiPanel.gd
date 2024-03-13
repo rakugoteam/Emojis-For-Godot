@@ -4,6 +4,9 @@ extends Window
 @export
 @onready var emojis_text: RichTextLabel
 
+@export_range(0.1, 1, 0.01)
+var fill_scale_x: float = 0.8
+
 @export
 @onready var notify_label: Label
 
@@ -18,6 +21,9 @@ extends Window
 
 @export
 @onready var scroll_container: ScrollContainer
+
+@export
+@onready var help_button: Button
 
 var scroll_bar_v: ScrollBar:
 	get: return scroll_container.get_v_scroll_bar()
@@ -57,7 +63,7 @@ func update_emojis_size(value: int):
 func update_table(filter:=""):
 	var table = "[table={columns}, {inline_align}]"
 	table = table.format({
-		"columns": int(size.x / size_slider.value),
+		"columns": int((size.x * fill_scale_x) / size_slider.value),
 		"inline_align": INLINE_ALIGNMENT_CENTER
 	})
 
