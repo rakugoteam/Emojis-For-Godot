@@ -1,6 +1,9 @@
 @tool
 extends Window
 
+@export_multiline
+var loading_text := "[center][pulse]Loading... [/pulse][/center]"
+
 @export
 @onready var emojis_text: RichTextLabel
 
@@ -63,9 +66,11 @@ func update_emojis_size(value: int):
 func update_table(filter:=""):
 	var table = "[table={columns}, {inline_align}]"
 	table = table.format({
-		"columns": int((size.x * fill_scale_x) / size_slider.value),
+		"columns": int(size.x / size_slider.value),
 		"inline_align": INLINE_ALIGNMENT_CENTER
 	})
+
+	emojis_text.parse_bbcode(loading_text)
 
 	for key in EmojisDB.emojis:
 		if filter:
