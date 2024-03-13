@@ -2,27 +2,27 @@
 extends Window
 
 @export
-@onready var emojis_text : RichTextLabel
+@onready var emojis_text: RichTextLabel
 
 @export
-@onready var notify_label : Label
+@onready var notify_label: Label
 
 @export
-@onready var search_line_edit : LineEdit
+@onready var search_line_edit: LineEdit
 
 @export
-@onready var size_slider : HSlider
+@onready var size_slider: HSlider
 
 @export
-@onready var size_label : Label
+@onready var size_label: Label
 
 @export
-@onready var scroll_container : ScrollContainer
+@onready var scroll_container: ScrollContainer
 
-var scroll_bar_v : ScrollBar:
+var scroll_bar_v: ScrollBar:
 	get: return scroll_container.get_v_scroll_bar()
 
-var scroll_bar_h : ScrollBar:
+var scroll_bar_h: ScrollBar:
 	get: return scroll_container.get_h_scroll_bar()
 
 func _ready():
@@ -40,20 +40,21 @@ func _ready():
 func _on_finished():
 	scroll_bar_h.max_value = emojis_text.size.y
 	scroll_bar_v.max_value = emojis_text.size.x
+	update_emojis_size(size_slider.value)
 
 func _on_visibility_changed():
 	if is_visible():
 		update_emojis_size(size_slider.value)
 
-func update_emojis_size(value:int):
+func update_emojis_size(value: int):
 	size_label.text = str(value)
 	emojis_text.set("theme_override_font_sizes/normal_font_size", value)
 	update_table(search_line_edit.text)
 
-func update_table(filter := ""):
+func update_table(filter:=""):
 	var table = "[table={columns}, {inline_align}]"
 	table = table.format({
-		"columns": int (size.x / size_slider.value) ,
+		"columns": int(size.x / size_slider.value),
 		"inline_align": INLINE_ALIGNMENT_CENTER
 	})
 
@@ -72,7 +73,7 @@ func update_table(filter := ""):
 	table += "[/table]"
 	emojis_text.parse_bbcode(table)
 
-func _on_meta(link:String):
+func _on_meta(link: String):
 	DisplayServer.clipboard_set(link)
 	notify_label.text = "Copied to Clipboard: " + link
 	notify_label.show()
