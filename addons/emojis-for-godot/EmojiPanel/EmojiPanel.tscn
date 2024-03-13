@@ -9,6 +9,7 @@ title = "Emoji Finder"
 initial_position = 2
 size = Vector2i(775, 400)
 script = ExtResource("1_nv02s")
+loading_text = "[center] [pulse]Loading... [/pulse][/center]"
 emojis_text = NodePath("Panel/VBoxContainer/ScrollContainer/RichTextLabel")
 notify_label = NodePath("Panel/VBoxContainer/Notify")
 search_line_edit = NodePath("Panel/VBoxContainer/HBoxContainer/Search")
