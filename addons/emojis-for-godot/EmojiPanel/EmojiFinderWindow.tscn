@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://drtbh7jx3hr8h"]
+
+[ext_resource type="Script" path="res://addons/emojis-for-godot/EmojiPanel/emoji_finder_window.gd" id="1_05niv"]
+[ext_resource type="PackedScene" uid="uid://bni8w3a3pcbwn" path="res://addons/emojis-for-godot/EmojiPanel/EmojiPanel.tscn" id="1_nk8g8"]
+
+[node name="EmojiFinderWindow" type="Window"]
+title = "Emoji Finder"
+initial_position = 2
+size = Vector2i(775, 400)
+wrap_controls = true
+script = ExtResource("1_05niv")
+
+[node name="EmojiFinder" parent="." instance=ExtResource("1_nk8g8")]

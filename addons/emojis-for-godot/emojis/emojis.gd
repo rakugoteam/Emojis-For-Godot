@@ -1,6 +1,9 @@
 @tool
 extends Node
 
+const docked_setting_path := "application/addons/emojis_for_godot/is_docked"
+const prev_size_setting_path := "application/addons/emojis_for_godot/preview_size"
+
 var emojis := {}
 
 const path_here := "res://addons/emojis-for-godot/emojis/"
@@ -9,6 +12,18 @@ var json_path: String:
 
 var font_path: String:
 	get: return path_here + "NotoColorEmoji.ttf"
+
+var is_docked: bool:
+	set(value):
+		ProjectSettings.set_setting(docked_setting_path, value)
+	get:
+		return ProjectSettings.get_setting(docked_setting_path, true)
+
+var preview_size: int:
+	set(value):
+		ProjectSettings.set_setting(prev_size_setting_path, value)
+	get:
+		return ProjectSettings.get_setting(prev_size_setting_path, 24)
 
 var font: Font:
 	get:
@@ -53,7 +68,7 @@ func get_emoji_unicode(id: String) -> String:
 	push_warning("Emoji %s not found." % id)
 	return ""
 
-func get_emoji_bbcode(id: String, size:=0) -> String:
+func get_emoji_bbcode(id: String, size := 0) -> String:
 	var emoji := get_emoji_unicode(id)
 	if !emoji: return ""
 	var bbcode := "[font=%s]%s[/font]" % [font_path, emoji]
@@ -78,10 +93,10 @@ func parse_emojis(text: String):
 		var replacement := get_emoji_bbcode(emoji, size)
 		
 		if !replacement:
-			result = re.search(text, result.get_end())
+			result = re.search(text)
 			continue
 
 		text = text.replace(result.get_string(), replacement)
-		result = re.search(text, result.get_end())
+		result = re.search(text)
 	
 	return text
