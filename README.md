@@ -1,3 +1,6 @@
+# Deprecated
+Use [Godot Font Icons](https://github.com/rakugoteam/Godot-Icons-Fonts) instead!
+ 
 ![github-top-lang][lang] ![lic] ![emojis-lic]
 # Emojis for Godot
 
